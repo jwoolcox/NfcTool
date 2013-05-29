@@ -1,0 +1,12 @@
+
+/o.le-v7-g
+/o-g
+/x86
+/arm
+/o
+/o.le-v7
+.preview*
+obj
+bin
+*.suo
+.metadata**/*
