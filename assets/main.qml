@@ -60,14 +60,9 @@ NavigationPane {
             }
             Button {
                 id: unlockBtn;
-                text: "Unlock";
-                onClicked: {
-                    //menuList.selectionChanged();
-                    //NfcManager.startEchoEmulation;
-                    //MainMenu.emulate_echo_selected();
-                    //MainMenu.emulateEcho();
-                    //root.emulateEcho();
-                }
+                text: "Unlock"
+                objectName: "button"
+
             }
         }
     }
