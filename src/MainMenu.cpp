@@ -16,6 +16,7 @@
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/ListView>
+#include <bb/cascades/controls/button.h>
 #include <bb/cascades/Page>
 #include <cstdlib>
 
@@ -107,10 +108,18 @@ void MainMenu::findAndConnectControls() {
 	QObject::connect(listView, SIGNAL(triggered(const QVariantList)), this,
 			SLOT(onListSelectionChanged(const QVariantList)));
 
+	Button *motherfuckinbutton = _root->findChild<Button*>("button");
+	QObject::connect(motherfuckinbutton, SIGNAL(onClicked()), this,
+				SLOT(onButtonClicked()));
+
 	QObject::connect(this, SIGNAL(emulate_echo_selected()), this,
 			SLOT(emulateEcho()));
 
 	qDebug() << "XXXX ...done";
+}
+
+void MainMenu::onButtonClicked() {
+	emit emulate_echo_selected();
 }
 
 void MainMenu::onListSelectionChanged(const QVariantList indexPath) {
@@ -157,9 +166,9 @@ void MainMenu::cleanUpOnExit() {
 
 void MainMenu::emulateEcho() {
 	qDebug() << "XXXX MainMenu:emulateEcho() start";
-	_eventLog->show();
+	//_eventLog->show();
 	StateManager* state_mgr = StateManager::getInstance();
-	state_mgr->setEventLogShowing(true);
+	//state_mgr->setEventLogShowing(true);
 	_nfcManager->startEchoEmulation();
 	qDebug() << "XXXX MainMenu:emulateEcho() end";
 }
