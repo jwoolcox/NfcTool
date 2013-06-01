@@ -109,7 +109,7 @@ void MainMenu::findAndConnectControls() {
 			SLOT(onListSelectionChanged(const QVariantList)));
 
 	Button *motherfuckinbutton = _root->findChild<Button*>("button");
-	QObject::connect(motherfuckinbutton, SIGNAL(onClicked()), this,
+	QObject::connect(motherfuckinbutton, SIGNAL(clicked()), this,
 				SLOT(onButtonClicked()));
 
 	QObject::connect(this, SIGNAL(emulate_echo_selected()), this,
