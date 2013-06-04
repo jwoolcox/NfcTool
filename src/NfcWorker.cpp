@@ -1086,80 +1086,80 @@ void NfcWorker::handleNfcEvent(bps_event_t *event) {
 	//emit message("Handling an NFC event");
 	qDebug() << "XXXX Handling an NFC event";
 
-	switch (_taskToPerform) {
-	case WRITE_CUSTOM_TAG:
-		qDebug() << "XXXX Handling an NFC event in WRITE_CUSTOM_TAG state";
-		handleNfcWriteCustomTagEvent(event);
-		break;
-
-	case WRITE_SP_TAG:
-		qDebug() << "XXXX Handling an NFC event in WRITE_SP_TAG state";
-		handleNfcWriteSpTagEvent(event);
-		break;
-
-	case WRITE_TEXT_TAG:
-		qDebug() << "XXXX Handling an NFC event in WRITE_TEXT_TAG state";
-		handleNfcWriteTextTagEvent(event);
-		break;
-
-	case WRITE_URI_TAG:
-		qDebug() << "XXXX Handling an NFC event in WRITE_URI_TAG state";
-		handleNfcWriteUriTagEvent(event);
-		break;
-
-	case READ_ISO15693:
-		qDebug() << "XXXX Handling an NFC event in READ_ISO15693 state";
-		handleIso15693TagEvent(event);
-		break;
-
-	case WRITE_ISO15693:
-		qDebug() << "XXXX Handling an NFC event in READ_ISO15693 state";
-		handleIso15693TagEvent(event);
-		break;
-
-	case READ_NDEF_TAG:
-		qDebug() << "XXXX Handling an NFC event in READ_NDEF_TAG state";
-		handleNfcReadNdefTagEvent(event);
-		break;
-
-	case CARD_APDU_EXCHANGE:
-		qDebug() << "XXXX Handling an NFC event in CARD_APDU_EXCHANGE state";
-		exchangeApduWithCard(event);
-		break;
-
-	case SEND_VCARD:
-		qDebug() << "XXXX Handling an NFC event in SEND_VCARD state";
-		handleSendVcardEvent(event);
-		break;
-
-	case EMULATE_TAG:
-		qDebug() << "XXXX Handling an NFC event in EMULATE_TAG state";
-		handleEmulateNfcEvent(event);
-		break;
-
-	case EMULATE_ECHO:
-		qDebug() << "XXXX Handling an NFC event in EMULATE_ECHO state";
+//	switch (_taskToPerform) {
+//	case WRITE_CUSTOM_TAG:
+//		qDebug() << "XXXX Handling an NFC event in WRITE_CUSTOM_TAG state";
+//		handleNfcWriteCustomTagEvent(event);
+//		break;
+//
+//	case WRITE_SP_TAG:
+//		qDebug() << "XXXX Handling an NFC event in WRITE_SP_TAG state";
+//		handleNfcWriteSpTagEvent(event);
+//		break;
+//
+//	case WRITE_TEXT_TAG:
+//		qDebug() << "XXXX Handling an NFC event in WRITE_TEXT_TAG state";
+//		handleNfcWriteTextTagEvent(event);
+//		break;
+//
+//	case WRITE_URI_TAG:
+//		qDebug() << "XXXX Handling an NFC event in WRITE_URI_TAG state";
+//		handleNfcWriteUriTagEvent(event);
+//		break;
+//
+//	case READ_ISO15693:
+//		qDebug() << "XXXX Handling an NFC event in READ_ISO15693 state";
+//		handleIso15693TagEvent(event);
+//		break;
+//
+//	case WRITE_ISO15693:
+//		qDebug() << "XXXX Handling an NFC event in READ_ISO15693 state";
+//		handleIso15693TagEvent(event);
+//		break;
+//
+//	case READ_NDEF_TAG:
+//		qDebug() << "XXXX Handling an NFC event in READ_NDEF_TAG state";
+//		handleNfcReadNdefTagEvent(event);
+//		break;
+//
+//	case CARD_APDU_EXCHANGE:
+//		qDebug() << "XXXX Handling an NFC event in CARD_APDU_EXCHANGE state";
+//		exchangeApduWithCard(event);
+//		break;
+//
+//	case SEND_VCARD:
+//		qDebug() << "XXXX Handling an NFC event in SEND_VCARD state";
+//		handleSendVcardEvent(event);
+//		break;
+//
+//	case EMULATE_TAG:
+//		qDebug() << "XXXX Handling an NFC event in EMULATE_TAG state";
+//		handleEmulateNfcEvent(event);
+//		break;
+//
+//	case EMULATE_ECHO:
+//		qDebug() << "XXXX Handling an NFC event in EMULATE_ECHO state";
 		handleEmulateEchoEvent(event);
-		break;
-
-	case READ_GVB:
-		qDebug() << "XXXX Handling an NFC event in READ_GVB state";
-		handleGvbEvent(event);
-		break;
-
-	case READ_TAG_DETAILS:
-		qDebug() << "XXXX Handling an NFC event in READ_TAG_DETAILS state";
-		handleReadTagDetailsEvent(event);
-		break;
-
-	case NONE_SET:
-		qDebug() << "XXXX Handling an NFC event in NONE_SET state";
-		break;
-
-	default:
-		qDebug() << "XXXX Handling an NFC event in an undefined state";
-		break;
-	}
+//		break;
+//
+//	case READ_GVB:
+//		qDebug() << "XXXX Handling an NFC event in READ_GVB state";
+//		handleGvbEvent(event);
+//		break;
+//
+//	case READ_TAG_DETAILS:
+//		qDebug() << "XXXX Handling an NFC event in READ_TAG_DETAILS state";
+//		handleReadTagDetailsEvent(event);
+//		break;
+//
+//	case NONE_SET:
+//		qDebug() << "XXXX Handling an NFC event in NONE_SET state";
+//		break;
+//
+//	default:
+//		qDebug() << "XXXX Handling an NFC event in an undefined state";
+//		break;
+//	}
 }
 /*
  * All detected Navigator events are handled here ( NDEF Tags Read Events included )

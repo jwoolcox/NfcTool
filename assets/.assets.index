@@ -1,10 +1,5 @@
 1
-8
-AlternatingListItemTemplate.qml
-common/MenuContainer.qml
-common/MenuItem.qml
-eventlog.qml
+3
 images/active.png
 images/inactive.png
 main.qml
-models/menumodel.xml

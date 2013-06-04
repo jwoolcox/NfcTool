@@ -85,15 +85,11 @@ void NfcManager::handleTagReadInvocation(QByteArray data) {
 }
 
 void NfcManager::startEchoEmulation() {
-	qDebug() << "XXXX NfcManager::startEchoEmulation";
-	Logger::getInstance()->clearLog();
-	emit message("Touch reader");
+
 	_workerInstance = NfcWorker::getInstance();
-	qDebug() << "XXXX NfcManager::startEchoEmulation disconnecting then connecting signal";
 	QObject::disconnect(this, SIGNAL(start_echo_emulation()), 0,0);
 	QObject::connect(this, SIGNAL(start_echo_emulation()), _workerInstance, SLOT(emulateEcho()), Qt::QueuedConnection);
 	emit start_echo_emulation();
-	qDebug() << "XXXX NfcManager::startEchoEmulation done";
 }
 void NfcManager::message(const QVariant &text) {
 	Logger::getInstance()->log("INF", text.toString());
