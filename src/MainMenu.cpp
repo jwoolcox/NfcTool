@@ -16,6 +16,7 @@
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/ListView>
+#include <bb/cascades/controls/imagetogglebutton.h>
 #include <bb/cascades/controls/button.h>
 #include <bb/cascades/Page>
 #include <cstdlib>
@@ -111,6 +112,10 @@ void MainMenu::findAndConnectControls() {
 	Button *motherfuckinbutton = _root->findChild<Button*>("button");
 	QObject::connect(motherfuckinbutton, SIGNAL(clicked()), this,
 				SLOT(onButtonClicked()));
+
+	ImageToggleButton *activatebutton = _root->findChild<ImageToggleButton*>("imgtgbtn");
+		QObject::connect(activatebutton, SIGNAL(checkChanged()), this,
+					SLOT(onButtonClicked()));
 
 	QObject::connect(this, SIGNAL(emulate_echo_selected()), this,
 			SLOT(emulateEcho()));

@@ -36,27 +36,44 @@ NavigationPane {
 
             // A Container for the list, padded at the top and bottom to make room for decorations.
             Container {
-                layout: DockLayout {
-                }
-                topPadding: 200
-                bottomPadding: 2
+                verticalAlignment: VerticalAlignment.Center
+                horizontalAlignment: HorizontalAlignment.Center
+                layoutProperties: StackLayoutProperties {
 
-                ListView {
-                    id: menuList;
-                    objectName: "list"
-                    dataModel: XmlDataModel {
-                        source: "models/menumodel.xml"
-                    }
-                                        
-                    listItemComponents: [
-                        ListItemComponent {
-                            type: "menuitem" 
-                            MenuItem {
-                            }
-                        }
-                    ]
-                    
                 }
+                //                layout: DockLayout {
+//                }
+//                topPadding: 200
+//                bottomPadding: 2
+//
+//                ListView {
+//                    id: menuList;
+//                    objectName: "list"
+//                    dataModel: XmlDataModel {
+//                        source: "models/menumodel.xml"
+//                    }
+//                                        
+//                    listItemComponents: [
+//                        ListItemComponent {
+//                            type: "menuitem" 
+//                            MenuItem {
+//                            }
+//                        }
+//                    ]
+//                    
+//                }
+
+            }
+
+            ImageToggleButton {
+                imageSourceDefault: "asset:///images/inactive.png"
+                imageSourceChecked: "asset:///images/active.png"
+                id: activateBtn
+                objectName: "imgtgbtn"
+                imageSourcePressedUnchecked: "asset:///images/active.png"
+                imageSourcePressedChecked: "asset:///images/inactive.png"
+                verticalAlignment: VerticalAlignment.Center
+                horizontalAlignment: HorizontalAlignment.Center
             }
             Button {
                 id: unlockBtn;
