@@ -14,7 +14,7 @@
  */
 #include "NfcManager.hpp"
 #include "NdefType.hpp"
-#include "Logger.hpp"
+//#include "Logger.hpp"
 #include "NfcWorker.hpp"
 //#include "Settings.hpp"
 
@@ -91,17 +91,11 @@ void NfcManager::startEchoEmulation() {
 	QObject::connect(this, SIGNAL(start_echo_emulation()), _workerInstance, SLOT(emulateEcho()), Qt::QueuedConnection);
 	emit start_echo_emulation();
 }
-void NfcManager::message(const QVariant &text) {
-	Logger::getInstance()->log("INF", text.toString());
-}
 
-void NfcManager::clearMessages() {
-	Logger::getInstance()->clearLog();
-}
 
 void NfcManager::workerStopped() {
 	qDebug() << "XXXX NfcManager::workerStopped entered";
-	Logger::getInstance()->log("INF", "Worker thread has stopped");
+//	Logger::getInstance()->log("INF", "Worker thread has stopped");
 	emit nfcManagerStopped();
 }
 
