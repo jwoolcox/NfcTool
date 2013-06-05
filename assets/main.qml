@@ -26,33 +26,79 @@ NavigationPane {
         content: Container {
             background: Color.create("#262626")
             //preferredWidth: 768
-            
+
             layout: DockLayout {
             }
             ImageToggleButton {
                 imageSourceDefault: "asset:///images/inactive.png"
                 imageSourceChecked: "asset:///images/active.png"
-                id: activatebtn
+                id: imgtgbtn
                 objectName: "imgtgbtn"
                 imageSourcePressedUnchecked: "asset:///images/active.png"
                 imageSourcePressedChecked: "asset:///images/inactive.png"
                 verticalAlignment: VerticalAlignment.Center
                 horizontalAlignment: HorizontalAlignment.Center
-                checked: false
+                checked: _mainMenu.getValueFor("autoActive", "false")
             }
-//            DropDown{
-//                title: "Lock"
-//                options: Option {
-//                    text: "Home"
-//                    description: "Front Door"
-//
-//                }
-//                Option {
-//                    text: "Work"
-//                    description: "Service entrance"
-//                }
-//
-//            }
+            ImageButton {
+                onClicked: {
+                    showOptions()
+                }
+                defaultImageSource: "asset:///images/ico_bb_ea_gear.png"
+                pressedImageSource: "asset:///images/ico_lb_da_gear.png"
+                horizontalAlignment: HorizontalAlignment.Right
+
+            }
+            Container {
+                layout: StackLayout {
+                    orientation: LayoutOrientation.LeftToRight
+
+                }
+                Label {
+                    text: "Toggle value: "
+                    textStyle.color: Color.Red
+                    textStyle.textAlign: TextAlign.Center
+                    textStyle.fontWeight: FontWeight.Bold
+                }
+                Label {
+                    text: _mainMenu.getValueFor("autoActive", "false")
+                    textStyle.color: Color.Red
+                    textStyle.textAlign: TextAlign.Center
+                    textStyle.fontWeight: FontWeight.Bold
+                }
+            }
+
         }
+
     }
+    attachedObjects: [
+        ComponentDefinition {
+            id: optionsPage
+            source: "optionsPage.qml"
+        }
+    ]
+    function showOptions() {
+        // show option page
+        var newPage = optionsPage.createObject();
+        nav.push(newPage);
+    }
+    onCreationCompleted: {
+        // this slot is called when declarative scene is created
+        // write post creation initialization here
+        //console.log("NavigationPane - onCreationCompleted()")
+        //if (_mainMenu.getValueFor("autoActive", "false") == "true") {
+            //showOptions();
+            //activatebtn.checked = "true"
+            //activatebtn.checkedChanged()
+            //_mainMenu.onButtonClicked(true)
+            
+    //}
+        if (_mainMenu.getValueFor("autoActive", "false") == "true") {
+            //activatebtn.checked = true;
+            //signal activatebtn.checkedChanged(true);
+            imgtgbtn.checkedChanged(true)
+        }
+
+    }
+    //signal checkedChanged()
 }

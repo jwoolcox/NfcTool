@@ -20,6 +20,7 @@
 #include <bb/cascades/controls/button.h>
 #include <bb/cascades/Page>
 #include <cstdlib>
+#include <QSettings>
 
 #include "MainMenu.hpp"
 #include "Settings.hpp"
@@ -30,6 +31,9 @@ using namespace bb::cascades;
 
 MainMenu::MainMenu(Application *app) :
 		_nfcManager(0), _appVersion(QString(Settings::AppVersion)) {
+
+	QCoreApplication::setOrganizationName("Example");
+	QCoreApplication::setApplicationName("Starship Settings");
 
 	_app = app;
 	_qml = QmlDocument::create("asset:///main.qml");
@@ -54,6 +58,10 @@ MainMenu::MainMenu(Application *app) :
 	connectSignals();
 	qDebug() << "XXXX done calling connectSignals";
 	onMainMenuTriggered();
+	//call onButtonClicked if the value of autoActive is True or at least pass the value (true or false)
+//	if (getValueFor("autoActive", "false") == "true") {
+//		//onButtonClicked(true);
+//	}
 
 }
 
@@ -147,3 +155,24 @@ void MainMenu::emulateEcho() {
 	_nfcManager->startEchoEmulation();
 	qDebug() << "XXXX MainMenu:emulateEcho() end";
 }
+
+QString MainMenu::getValueFor(const QString &objectName,
+		const QString &defaultValue) {
+	QSettings settings;
+
+	// If no value has been saved, return the default value.
+	if (settings.value(objectName).isNull()) {
+		return defaultValue;
+	}
+
+	// Otherwise, return the value stored in the settings object.
+	return settings.value(objectName).toString();
+}
+
+void MainMenu::saveValueFor(const QString &objectName,
+		const QString &inputValue) {
+	// A new value is saved to the application settings object.
+	QSettings settings;
+	settings.setValue(objectName, QVariant(inputValue));
+}
+

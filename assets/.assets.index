@@ -1,5 +1,9 @@
 1
-3
+7
+data/settings.xml
 images/active.png
+images/ico_bb_ea_gear.png
+images/ico_lb_da_gear.png
 images/inactive.png
 main.qml
+optionsPage.qml
