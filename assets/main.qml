@@ -96,7 +96,7 @@ NavigationPane {
         if (_mainMenu.getValueFor("autoActive", "false") == "true") {
             //activatebtn.checked = true;
             //signal activatebtn.checkedChanged(true);
-            imgtgbtn.checkedChanged(true)
+            //imgtgbtn.checkedChanged(true)
         }
 
     }
