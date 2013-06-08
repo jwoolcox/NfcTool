@@ -16,9 +16,11 @@
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/ListView>
+#include <bb/cascades/controls/imagetogglebutton.h>
 #include <bb/cascades/controls/button.h>
 #include <bb/cascades/Page>
 #include <cstdlib>
+#include <QSettings>
 
 #include "MainMenu.hpp"
 #include "Settings.hpp"
@@ -29,6 +31,9 @@ using namespace bb::cascades;
 
 MainMenu::MainMenu(Application *app) :
 		_nfcManager(0), _appVersion(QString(Settings::AppVersion)) {
+
+	QCoreApplication::setOrganizationName("Example");
+	QCoreApplication::setApplicationName("Starship Settings");
 
 	_app = app;
 	_qml = QmlDocument::create("asset:///main.qml");
@@ -53,6 +58,10 @@ MainMenu::MainMenu(Application *app) :
 	connectSignals();
 	qDebug() << "XXXX done calling connectSignals";
 	onMainMenuTriggered();
+	//call onButtonClicked if the value of autoActive is True or at least pass the value (true or false)
+//	if (getValueFor("autoActive", "false") == "true") {
+//		//onButtonClicked(true);
+//	}
 
 }
 
@@ -60,7 +69,6 @@ MainMenu::~MainMenu() {
 	qDebug() << "XXXX MainMenu destructor";
 	deleteModules();
 }
-
 
 void MainMenu::startEventProcessing() {
 	_nfcManager = NfcManager::getInstance();
@@ -98,48 +106,23 @@ void MainMenu::connectSignals() {
 
 void MainMenu::findAndConnectControls() {
 
-	qDebug() << "XXXX finding and cacheing NavigationPane object";
-	//Navigator* nav = Navigator::getInstance();
-
-	qDebug()
-			<< "XXXX finding and connecting the ListView to onListSelectionChanged slot";
-
-	ListView *listView = _root->findChild<ListView*>("list");
-	QObject::connect(listView, SIGNAL(triggered(const QVariantList)), this,
-			SLOT(onListSelectionChanged(const QVariantList)));
-
-	Button *motherfuckinbutton = _root->findChild<Button*>("button");
-	QObject::connect(motherfuckinbutton, SIGNAL(clicked()), this,
-				SLOT(onButtonClicked()));
+	ImageToggleButton *activatebutton = _root->findChild<ImageToggleButton*>(
+			"imgtgbtn");
+	QObject::connect(activatebutton, SIGNAL(checkedChanged(bool)), this,
+			SLOT(onButtonClicked(bool)));
 
 	QObject::connect(this, SIGNAL(emulate_echo_selected()), this,
 			SLOT(emulateEcho()));
-
-	qDebug() << "XXXX ...done";
 }
 
-void MainMenu::onButtonClicked() {
-	emit emulate_echo_selected();
-}
-
-void MainMenu::onListSelectionChanged(const QVariantList indexPath) {
-
-	if (sender()) {
-		ListView* menuList = dynamic_cast<ListView*>(sender());
-		DataModel* menuModel = menuList->dataModel();
-
-		QVariantMap map = menuModel->data(indexPath).toMap();
-		if (map["itemName"].canConvert(QVariant::String)) {
-			QString item = map["itemName"].toString();
-
-			qDebug() << "XXXX selected item name=" << item;
-
-			qDebug() << "XXXX Emulate Echo was selected!";
-			StateManager* state_mgr = StateManager::getInstance();
-			state_mgr->setEventLogShowing(true);
-			_eventLog->setMessage("Place BlackBerry on reader");
-			emit emulate_echo_selected();
-		}
+void MainMenu::onButtonClicked(bool checked) {
+	if (checked) { //button state is on
+		emit emulate_echo_selected();
+	} else {
+		StateManager* state_mgr = StateManager::getInstance();
+		state_mgr->setDefaultState();
+		_nfcManager = NfcManager::getInstance();
+		_nfcManager->resetWorker();
 	}
 }
 
@@ -167,8 +150,29 @@ void MainMenu::cleanUpOnExit() {
 void MainMenu::emulateEcho() {
 	qDebug() << "XXXX MainMenu:emulateEcho() start";
 	//_eventLog->show();
-	StateManager* state_mgr = StateManager::getInstance();
+	//StateManager* state_mgr = StateManager::getInstance();
 	//state_mgr->setEventLogShowing(true);
 	_nfcManager->startEchoEmulation();
 	qDebug() << "XXXX MainMenu:emulateEcho() end";
 }
+
+QString MainMenu::getValueFor(const QString &objectName,
+		const QString &defaultValue) {
+	QSettings settings;
+
+	// If no value has been saved, return the default value.
+	if (settings.value(objectName).isNull()) {
+		return defaultValue;
+	}
+
+	// Otherwise, return the value stored in the settings object.
+	return settings.value(objectName).toString();
+}
+
+void MainMenu::saveValueFor(const QString &objectName,
+		const QString &inputValue) {
+	// A new value is saved to the application settings object.
+	QSettings settings;
+	settings.setValue(objectName, QVariant(inputValue));
+}
+

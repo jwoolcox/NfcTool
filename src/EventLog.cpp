@@ -22,8 +22,8 @@
 
 #include "EventLog.hpp"
 #include "StateManager.hpp"
-#include "alternatinglistdatamodel.hpp"
-#include "alternatinglistdatamanager.hpp"
+//#include "alternatinglistdatamodel.hpp"
+//#include "alternatinglistdatamanager.hpp"
 #include "Settings.hpp"
 #include "Logger.hpp"
 #include "Navigator.hpp"
@@ -45,13 +45,13 @@ EventLog::EventLog() :
 	_qml->setContextProperty("_el", this);
 
 	Logger* logger = Logger::getInstance();
-
-	AlternatingListDataManager* alternatingListDataManager =
-			new AlternatingListDataManager("asset:///AlternatingListItemTemplate.qml");
-	AlternatingListDataModel* alternatingListDataModel = logger->getDataModel();
-
-	itemprovider = alternatingListDataManager;
-	datamodel = alternatingListDataModel;
+////
+////	AlternatingListDataManager* alternatingListDataManager =
+////			new AlternatingListDataManager("asset:///AlternatingListItemTemplate.qml");
+////	AlternatingListDataModel* alternatingListDataModel = logger->getDataModel();
+//
+//	itemprovider = alternatingListDataManager;
+//	datamodel = alternatingListDataModel;
 
 	_qml->setContextProperty("_modelObj", datamodel);
 	_qml->documentContext()->setContextProperty("_model",
@@ -59,7 +59,7 @@ EventLog::EventLog() :
 	_qml->documentContext()->setContextProperty("_manager",
 			QVariant::fromValue(itemprovider));
 
-	alternatingListDataModel->ascendingSortOrder(false);
+//	alternatingListDataModel->ascendingSortOrder(false);
 
 	qDebug() << "XXXX Constructing EventLog root Page";
 	_root = _qml->createRootObject<Page>();
@@ -96,7 +96,7 @@ void EventLog::show() {
 	Navigator* nav = Navigator::getInstance();
 	NavigationPane* navpane = nav->getNavigationPane();
 
-	Logger::getInstance()->clearLog();
+//	Logger::getInstance()->clearLog();
 
 	StateManager* state_mgr = StateManager::getInstance();
 

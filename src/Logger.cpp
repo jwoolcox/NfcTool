@@ -19,7 +19,7 @@ QString colour_codes[2];
 
 Logger::Logger() {
 	qDebug() << "XXXX Constructing Logger";
-	_data_model = new AlternatingListDataModel;
+//	_data_model = new AlternatingListDataModel;
 	colour_codes << "#00ff00" << "#00ffff";
 	current_colour = 0;
 	qDebug() << "XXXX Done constructing Logger";
@@ -37,26 +37,26 @@ Logger* Logger::getInstance() {
 	return _instance;
 }
 
-AlternatingListDataModel* Logger::getDataModel() {
-	return _data_model;
-}
-
-void Logger::log(const QString& itemLabel, const QString& desc) {
-	if (_data_model != 0) {
-		_data_model->append(colour_codes[current_colour], itemLabel, desc);
-		switch (current_colour) {
-		case 0:
-			current_colour = 1;
-			break;
-		case 1:
-			current_colour = 0;
-			break;
-		}
-	}
-}
-
-void Logger::clearLog() {
-	if (_data_model != 0) {
-		_data_model->reset();
-	}
-}
+//AlternatingListDataModel* Logger::getDataModel() {
+//	return _data_model;
+//}
+//
+//void Logger::log(const QString& itemLabel, const QString& desc) {
+//	if (_data_model != 0) {
+//		_data_model->append(colour_codes[current_colour], itemLabel, desc);
+//		switch (current_colour) {
+//		case 0:
+//			current_colour = 1;
+//			break;
+//		case 1:
+//			current_colour = 0;
+//			break;
+//		}
+//	}
+//}
+//
+//void Logger::clearLog() {
+//	if (_data_model != 0) {
+//		_data_model->reset();
+//	}
+//}
