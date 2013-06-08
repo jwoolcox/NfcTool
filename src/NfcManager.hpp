@@ -56,8 +56,6 @@ signals:
 	void resetWorkerState();
 
 public slots:
-	void message(const QVariant &text);
-	void clearMessages();
 	void workerStopped();
 	void resetWorker();
 

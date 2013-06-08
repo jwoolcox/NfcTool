@@ -13,9 +13,6 @@ device {
                  $$quote($$BASEDIR/src/Settings.cpp) \
                  $$quote($$BASEDIR/src/StateManager.cpp) \
                  $$quote($$BASEDIR/src/Utilities.cpp) \
-                 $$quote($$BASEDIR/src/alternatinglistdatamanager.cpp) \
-                 $$quote($$BASEDIR/src/alternatinglistdatamodel.cpp) \
-                 $$quote($$BASEDIR/src/alternatinglistitem.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/EventLog.hpp) \
@@ -27,10 +24,7 @@ device {
                  $$quote($$BASEDIR/src/NfcWorker.hpp) \
                  $$quote($$BASEDIR/src/Settings.hpp) \
                  $$quote($$BASEDIR/src/StateManager.hpp) \
-                 $$quote($$BASEDIR/src/Utilities.hpp) \
-                 $$quote($$BASEDIR/src/alternatinglistdatamanager.hpp) \
-                 $$quote($$BASEDIR/src/alternatinglistdatamodel.hpp) \
-                 $$quote($$BASEDIR/src/alternatinglistitem.hpp)
+                 $$quote($$BASEDIR/src/Utilities.hpp)
     }
 
     CONFIG(release, debug|release) {
@@ -44,9 +38,6 @@ device {
                  $$quote($$BASEDIR/src/Settings.cpp) \
                  $$quote($$BASEDIR/src/StateManager.cpp) \
                  $$quote($$BASEDIR/src/Utilities.cpp) \
-                 $$quote($$BASEDIR/src/alternatinglistdatamanager.cpp) \
-                 $$quote($$BASEDIR/src/alternatinglistdatamodel.cpp) \
-                 $$quote($$BASEDIR/src/alternatinglistitem.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/EventLog.hpp) \
@@ -58,10 +49,7 @@ device {
                  $$quote($$BASEDIR/src/NfcWorker.hpp) \
                  $$quote($$BASEDIR/src/Settings.hpp) \
                  $$quote($$BASEDIR/src/StateManager.hpp) \
-                 $$quote($$BASEDIR/src/Utilities.hpp) \
-                 $$quote($$BASEDIR/src/alternatinglistdatamanager.hpp) \
-                 $$quote($$BASEDIR/src/alternatinglistdatamodel.hpp) \
-                 $$quote($$BASEDIR/src/alternatinglistitem.hpp)
+                 $$quote($$BASEDIR/src/Utilities.hpp)
     }
 }
 
@@ -77,9 +65,6 @@ simulator {
                  $$quote($$BASEDIR/src/Settings.cpp) \
                  $$quote($$BASEDIR/src/StateManager.cpp) \
                  $$quote($$BASEDIR/src/Utilities.cpp) \
-                 $$quote($$BASEDIR/src/alternatinglistdatamanager.cpp) \
-                 $$quote($$BASEDIR/src/alternatinglistdatamodel.cpp) \
-                 $$quote($$BASEDIR/src/alternatinglistitem.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/EventLog.hpp) \
@@ -91,10 +76,7 @@ simulator {
                  $$quote($$BASEDIR/src/NfcWorker.hpp) \
                  $$quote($$BASEDIR/src/Settings.hpp) \
                  $$quote($$BASEDIR/src/StateManager.hpp) \
-                 $$quote($$BASEDIR/src/Utilities.hpp) \
-                 $$quote($$BASEDIR/src/alternatinglistdatamanager.hpp) \
-                 $$quote($$BASEDIR/src/alternatinglistdatamodel.hpp) \
-                 $$quote($$BASEDIR/src/alternatinglistitem.hpp)
+                 $$quote($$BASEDIR/src/Utilities.hpp)
     }
 }
 
