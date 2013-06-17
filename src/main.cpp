@@ -21,8 +21,14 @@
 
 using ::bb::cascades::Application;
 
+void myMessageOutput(QtMsgType, const char* msg){
+                fprintf(stdout, "%s\n", msg);
+                fflush(stdout);
+}
+
 Q_DECL_EXPORT int main(int argc, char **argv) {
 	Application app(argc, argv);
+	qInstallMsgHandler(myMessageOutput);
 
 	QTranslator translator;
 	QString locale_string = QLocale().name();
