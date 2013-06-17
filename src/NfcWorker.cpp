@@ -457,7 +457,7 @@ void NfcWorker::getDefaultID(char *identbuff) {
 
 
 	if (strlen(ifid) >= 16) {
-		identbuff[0] = 0x99;
+		//identbuff[0] = 99;
 		identbuff[1] = ifid[16];
 		identbuff[2] = ifid[15];
 		identbuff[3] = ifid[13];
@@ -486,7 +486,7 @@ _taskToPerform = EMULATE_ECHO;
  * to get the MAC and then break it apart at the : to create the array
  */
 size_t identifier_size = 4;
-char valid[] = { 0, 0, 0, 0 };
+char valid[] = { 0x4E, 0, 0, 0 };
 getDefaultID(valid);
 char* identifier = valid;
 
