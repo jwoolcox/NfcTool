@@ -461,6 +461,15 @@ void NfcWorker::getDefaultID(char *identbuff) {
 		identbuff[1] = ifid[16];
 		identbuff[2] = ifid[15];
 		identbuff[3] = ifid[13];
+		identbuff[4] = ifid[12];
+		identbuff[5] = ifid[10];
+		identbuff[6] = ifid[9];
+		identbuff[7] = ifid[7];
+		identbuff[8] = ifid[6];
+		identbuff[9] = ifid[4];
+		identbuff[10] = ifid[3];
+		identbuff[11] = ifid[1];
+		identbuff[12] = ifid[0];
 	}
 
 }
@@ -485,8 +494,8 @@ _taskToPerform = EMULATE_ECHO;
 	 * in order to do this we need to call QString QNetworkInterface::hardwareAddress () const
  * to get the MAC and then break it apart at the : to create the array
  */
-size_t identifier_size = 4;
-char valid[] = { 0x4E, 0, 0, 0 };
+size_t identifier_size = 13;
+char valid[] = { 0x4E, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 getDefaultID(valid);
 char* identifier = valid;
 
@@ -504,7 +513,7 @@ size_t applicationData_size = 13;
 nfc_iso14443_4_card_t card_type_A;
 card_type_A.type = ISO14443_4TYPE_A;
 card_type_A.info.A.identifier = identifier;
-qDebug() << identifier;
+qDebug() << "UUID:" << identifier;
 card_type_A.info.A.identifier_size = identifier_size;
 card_type_A.info.A.applicationData = applicationData;
 card_type_A.info.A.applicationData_size = applicationData_size;
