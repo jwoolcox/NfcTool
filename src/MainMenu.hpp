@@ -88,7 +88,7 @@ signals:
 
 public slots:
 	void onMainMenuTriggered();
-	void onButtonClicked(bool);
+	Q_INVOKABLE void onButtonClicked(bool);
 	//void onListSelectionChanged(const QVariantList indexPath);
 	void menuShowing();
 	void cleanUpOnExit();

@@ -108,16 +108,14 @@ void MainMenu::findAndConnectControls() {
 
 	ImageToggleButton *activatebutton = _root->findChild<ImageToggleButton*>(
 			"imgtgbtn");
+
 	QObject::connect(activatebutton, SIGNAL(checkedChanged(bool)), this,
 			SLOT(onButtonClicked(bool)));
-
-	QObject::connect(this, SIGNAL(emulate_echo_selected()), this,
-			SLOT(emulateEcho()));
 }
 
 void MainMenu::onButtonClicked(bool checked) {
 	if (checked) { //button state is on
-		emit emulate_echo_selected();
+		emulateEcho();
 	} else {
 		StateManager* state_mgr = StateManager::getInstance();
 		state_mgr->setDefaultState();

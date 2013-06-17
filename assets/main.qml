@@ -94,11 +94,10 @@ NavigationPane {
             
     //}
         if (_mainMenu.getValueFor("autoActive", "false") == "true") {
+            _mainMenu.onButtonClicked(true);
             //activatebtn.checked = true;
             //signal activatebtn.checkedChanged(true);
             //imgtgbtn.checkedChanged(true)
         }
-
     }
-    //signal checkedChanged()
 }

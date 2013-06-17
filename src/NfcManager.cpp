@@ -92,7 +92,6 @@ void NfcManager::startEchoEmulation() {
 	emit start_echo_emulation();
 }
 
-
 void NfcManager::workerStopped() {
 	qDebug() << "XXXX NfcManager::workerStopped entered";
 //	Logger::getInstance()->log("INF", "Worker thread has stopped");

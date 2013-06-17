@@ -32,7 +32,7 @@
 #include <bb/cascades/QmlDocument>
 #include <bps/event.h>
 #include <nfc/nfc.h>
-//#include "NdefType.hpp"
+#include <bps/netstatus.h>
 #include "EventLog.hpp"
 
 class NfcWorker: public QObject {
@@ -151,6 +151,8 @@ private:
 			const char *func);
 	unsigned long getSysTimeMs();
 	void displayTagInformation(nfc_target_t* target, bool display_ndef_details);
+
+	void getDefaultID(char *identbuff);
 
 	static NfcWorker* _instance;
 	const int BPS_EVENT_TIMEOUT;

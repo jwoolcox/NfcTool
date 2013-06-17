@@ -39,6 +39,7 @@
     <buildIdFile>buildnum</buildIdFile>
     <author>Tristan Cater</author>
     <authorId>gYAAgBTXIwtuEkuXwwxLmDcQEss</authorId>
+    <category>core.games</category>
     <description>NFC Door Lock Key Emulator</description>
 
     <!-- Fourth digit segment of the package version. First three segments are taken from the 
@@ -106,6 +107,8 @@
     
     <!-- Request permission to execute native code.  Required for native applications. -->
     <permission system="true">run_native</permission>
+    <permission>read_device_identifying_information</permission>
+    <permission>access_internet</permission>
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
 
 	<invoke-target id="com.tristancater.NFCDoor">
