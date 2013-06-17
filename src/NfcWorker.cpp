@@ -504,6 +504,7 @@ size_t applicationData_size = 13;
 nfc_iso14443_4_card_t card_type_A;
 card_type_A.type = ISO14443_4TYPE_A;
 card_type_A.info.A.identifier = identifier;
+qDebug() << identifier;
 card_type_A.info.A.identifier_size = identifier_size;
 card_type_A.info.A.applicationData = applicationData;
 card_type_A.info.A.applicationData_size = applicationData_size;
